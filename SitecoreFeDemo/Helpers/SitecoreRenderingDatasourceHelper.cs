@@ -1,4 +1,6 @@
-﻿using Sitecore.Mvc.Helpers;
+﻿using Newtonsoft.Json;
+using Sitecore.Mvc.Helpers;
+using SitecoreFeDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,18 @@ namespace SitecoreFeDemo.Helpers
         //public static MvcHtmlString GetExtensionMethodString(this SitecoreHelper helper)
         public static string RenderDatasourceContents(this SitecoreHelper helper)
         {
-            return HttpContext.Current.GetSitecoreModules();
+            if (HttpContext.Current.Items["SitecoreModules"] != null)
+            {
+                var modules = (List<DefaultComponent>)HttpContext.Current.Items["SitecoreModules"];
+                var json = JsonConvert.SerializeObject(modules);
+
+                return json.ToString();
+
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

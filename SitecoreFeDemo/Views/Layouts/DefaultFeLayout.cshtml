@@ -16,6 +16,7 @@
 
     <div id="MainPanel">@Html.Sitecore().Placeholder("main")</div>
 
-    @Html.Sitecore().RenderDatasourceContents()
+    <script>var data = @Html.Sitecore().RenderDatasourceContents()
+    </script>
 </body>
 </html>

@@ -10,7 +10,7 @@ namespace SitecoreFeDemo.Models
     {
         public Guid Id { get; set; }
 
-        public string name { get; set; }
+        public string datasourceContentItem { get; set; }
 
         public string datasourceContent { get; set; }
     }

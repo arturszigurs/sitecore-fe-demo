@@ -14,24 +14,36 @@ namespace SitecoreFeDemo.Controllers
         public DefaultComponentController()
 
         {
+
+        }
+
+        public ActionResult ShowComponent()
+        {
             //gets rendering datasource
             var dataSourceId = RenderingContext.CurrentOrNull.Rendering.DataSource;
             var dataSource = Sitecore.Context.Database.GetItem(dataSourceId);
 
             //creates model.
             var currentModule = new DefaultComponent();
-            currentModule.datasourceContent = dataSource.ToString() ;
+            currentModule.Id = Guid.NewGuid();
+            currentModule.datasourceContentItem = dataSource.Paths.ContentPath.ToString();
 
-            //adds model to httpContext.
+            //for demo purposes, sets default content.
+            currentModule.datasourceContent = RenderingContext.Current.Rendering.RenderingItem.Name.ToString();
+
+
+            //adds model to httpContext
             var modules = HttpContext.GetSitecoreModules();
+            if (modules==null)
+            {
+                modules = new List<DefaultComponent>();
+            }
             modules.Add(currentModule);
 
             HttpContext.Items["SitecoreModules"] = modules;
-        }
 
-        public ActionResult ShowComponent()
-        {
-            return View();
+
+            return View("~/Views/DefaultComponent.cshtml", currentModule);
         }
     }
 }
