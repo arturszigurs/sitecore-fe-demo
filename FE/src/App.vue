@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <h1>{{type}}</h1>
     <h2>{{id}}</h2>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld v-bind:msg="data.title"/>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  props: ['type', 'id'],
+  props: ['type', 'id', 'data'],
   components: {
     HelloWorld
   }
