@@ -26,15 +26,15 @@ namespace SitecoreFeDemo.Controllers
             //creates model.
             var currentModule = new DefaultComponent();
             currentModule.Id = Guid.NewGuid();
-            currentModule.datasourceContentItem = dataSource.Paths.ContentPath.ToString();
+            currentModule.componentType = RenderingContext.Current.Rendering.RenderingItem.Name.ToString();
 
             //for demo purposes, sets default content.
-            currentModule.datasourceContent = RenderingContext.Current.Rendering.RenderingItem.Name.ToString();
+            currentModule.datasourceContent = "";
 
 
             //adds model to httpContext
             var modules = HttpContext.GetSitecoreModules();
-            if (modules==null)
+            if (modules == null)
             {
                 modules = new List<DefaultComponent>();
             }
