@@ -1,6 +1,9 @@
-﻿using Sitecore.Mvc.Controllers;
+﻿using Newtonsoft.Json;
+using Sitecore.Data;
+using Sitecore.Mvc.Controllers;
 using Sitecore.Mvc.Presentation;
 using SitecoreFeDemo.Models;
+using SitecoreFeDemo.Models.Glass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +26,21 @@ namespace SitecoreFeDemo.Controllers
             var dataSourceId = RenderingContext.CurrentOrNull.Rendering.DataSource;
             var dataSource = Sitecore.Context.Database.GetItem(dataSourceId);
 
-            //creates model.
+            //creates & populates viewModel
             var currentModule = new DefaultComponent();
             currentModule.Id = Guid.NewGuid();
             currentModule.componentType = RenderingContext.Current.Rendering.RenderingItem.Name.ToString();
 
-            //for demo purposes, sets default content.
-            currentModule.datasourceContent = "";
+            //builds data-json attribute contents in html.
+            if (dataSource != null)
+            {
+                var componentContents = new ComponentContents();
+                componentContents.title = dataSource.Fields["title"].ToString();
+                componentContents.content = dataSource.Fields["content"].ToString();
+                currentModule.datasourceContent = JsonConvert.SerializeObject(componentContents);
+            }
+
+
 
 
             //adds model to httpContext

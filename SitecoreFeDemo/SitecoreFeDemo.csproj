@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Helpers\SitecoreRenderingDatasourceHelper.cs" />
     <Compile Include="Models\DefaultComponent.cs" />
+    <Compile Include="Models\DataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

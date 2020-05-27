@@ -7,16 +7,19 @@
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<sytlesheet type="text/css" src="~/dist/css/app.c081223e.css"></sytlesheet>
 
-<head>
-    <title>Sitecore demo</title>
-</head>
-<body>
-    <h1>Sitecore demo to decouple layout from content, and render it using modern web technologies.</h1>
+    <head>
+        <title>Sitecore demo</title>
+    </head>
 
-    <div id="MainPanel">@Html.Sitecore().Placeholder("main")</div>
+    <body>
+        <h1>Sitecore demo to decouple layout from content, and render it using modern web technologies.</h1>
 
-    @Html.Sitecore().RenderDatasourceContents()
-    
-</body>
+        <div id="MainPanel">@Html.Sitecore().Placeholder("main")</div>
+        @*@Html.Sitecore().RenderDatasourceContents()*@
+    </body>
+<script type="text/javascript" src="~/dist/js/app.5b700e43.js"></script>
+<script type="text/javascript" src="~/dist/js/chunk-vendors.d9113b53.js"></script>
+
 </html>
