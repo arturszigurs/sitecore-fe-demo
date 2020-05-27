@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <h1>{{type}}</h1>
     <h2>{{id}}</h2>
-    <HelloWorld v-bind:msg="data.title"/>
+    <HelloWorld v-bind:msg="data.title" v-bind:para="data.paragraph"/>
   </div>
 </template>
 

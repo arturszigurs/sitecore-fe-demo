@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <span v-html="para"></span>
   </div>
 </template>
 
@@ -8,7 +9,8 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
+    para: String
   }
 }
 </script>
